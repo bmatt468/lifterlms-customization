@@ -47,6 +47,7 @@ if ( ! class_exists( 'LLMS_Customization') ) :
 					plugin_dir_url(LLMSCustomization_PLUGIN_FILE) . 'assets/img/menu-icon.png',
 					'50.15974');
 				add_action( 'admin_init', array($this,'RegisterSettings'));
+				add_action( 'wp_head', array($this,'GenerateCSS'));
 			}
 			else 
 			{
@@ -109,6 +110,33 @@ if ( ! class_exists( 'LLMS_Customization') ) :
 				'lifterlms_custom_open'
 			);
 
+			add_settings_field( 'theme_select',
+				'Select Theme',
+				array($this,'ThemeSelectOutput'),
+				'lifterlms_custom_open',
+				 'LLMS_CustomizationThemeSection'
+			);
+
+			add_settings_field( 'theme_primary_color',
+				'Primary Color',
+				array($this,'PrimaryColorOutput'),
+				'lifterlms_custom_open',
+				 'LLMS_CustomizationThemeSection'
+			);
+
+			add_settings_field( 'theme_secondary_color',
+				'Secondary Color',
+				array($this,'SecondaryColorOutput'),
+				'lifterlms_custom_open',
+				 'LLMS_CustomizationThemeSection'
+			);
+
+			add_settings_section( 'LLMS_CustomizationThemeCloseSection', 
+				'', 
+				array($this,'ThemeSectionClose'), 
+				'lifterlms_custom_open'
+			);
+
 			///////////////////
 			// First Section //
 			///////////////////
@@ -125,6 +153,13 @@ if ( ! class_exists( 'LLMS_Customization') ) :
 				 'LLMS_CustomizationColorSection'
 			);
 
+			add_settings_field( 'primary_button_text_color',
+				'Primary Button Text Color',
+				array($this,'PrimaryButtonTextColorOutput'),
+				'lifterlms_custom',
+				 'LLMS_CustomizationColorSection'
+			);
+
 			add_settings_field( 'primary_button_hover_color',
 				'Primary Button Hover Color',
 				array($this,'PrimaryButtonHoverColorOutput'),
@@ -132,9 +167,9 @@ if ( ! class_exists( 'LLMS_Customization') ) :
 				 'LLMS_CustomizationColorSection'
 			);
 
-			add_settings_field( 'primary_button_text_color',
-				'Primary Button Text Color',
-				array($this,'PrimaryButtonTextColorOutput'),
+			add_settings_field( 'primary_button_hover_text_color',
+				'Primary Button Hover Text Color',
+				array($this,'PrimaryButtonHoverTextColorOutput'),
 				'lifterlms_custom',
 				 'LLMS_CustomizationColorSection'
 			);
@@ -154,6 +189,14 @@ if ( ! class_exists( 'LLMS_Customization') ) :
 				'lifterlms_custom',
 				 'LLMS_CustomizationSecondaryButtonColorSection'
 			);
+			
+
+			add_settings_field( 'secondary_button_text_color',
+				'Secondary Button Text Color',
+				array($this,'SecondaryButtonTextColorOutput'),
+				'lifterlms_custom',
+				 'LLMS_CustomizationSecondaryButtonColorSection'
+			);
 
 			add_settings_field( 'secondary_button_hover_color',
 				'Secondary Button Hover Color',
@@ -162,9 +205,9 @@ if ( ! class_exists( 'LLMS_Customization') ) :
 				 'LLMS_CustomizationSecondaryButtonColorSection'
 			);
 
-			add_settings_field( 'secondary_button_text_color',
-				'Secondary Button Text Color',
-				array($this,'SecondaryButtonTextColorOutput'),
+			add_settings_field( 'secondary_button_hover_text_color',
+				'Secondary Button Hover Text Color',
+				array($this,'SecondaryButtonHoverTextColorOutput'),
 				'lifterlms_custom',
 				 'LLMS_CustomizationSecondaryButtonColorSection'
 			);
@@ -239,8 +282,52 @@ if ( ! class_exists( 'LLMS_Customization') ) :
 		{
 			?>
 			<p>This section gives you the ability to select a predefined theme for use within LifterLMS;
-			however, if you wish to customize the plugin to your specific color set, you can do that below. </p>
+			however, if you wish to customize the plugin to your specific color set, you can do that below. 
+			</p>
+			<h4 style="font-size:14px">Note: Changing any of these three values will overwrite values in the advanced section.</h4>
 			<?php
+		}
+
+		public function ThemeSelectOutput()
+		{
+			$o = get_option('LLMS_CustomizationSettings');
+			$selected = isset($o['theme-select']) ? $o['theme-select'] : 'default';
+			?>
+			<select name="LLMS_CustomizationSettings[theme-select]" id="theme_select">
+				<option value="default" <?php echo ($selected == 'default') ? 'selected' : ''; ?>>Default</option>
+				<option value="blue" <?php echo ($selected == 'blue') ? 'selected' : ''; ?>>Azure</option>
+				<option value="green" <?php echo ($selected == 'green') ? 'selected' : ''; ?>>Emerald</option>
+				<option value="orange" <?php echo ($selected == 'orange') ? 'selected' : ''; ?>>Tangerine</option>
+				<option value="custom" <?php echo ($selected == 'custom') ? 'selected' : ''; ?>>Custom</option>
+			</select>
+			<div class="settings_label">Select from a list of predefined themes</div>
+			<?php
+		}
+
+		public function PrimaryColorOutput()
+		{
+			$o = get_option('LLMS_CustomizationSettings');
+			?>
+			<input type="text" id="primary-master" name="LLMS_CustomizationSettings[primary-color]" 
+			value="<?php echo isset($o['primary-color']) ? $o['primary-color'] : '#e5554e'; ?>" 
+			class="my-color-field primary-color" data-default-color="#e5554e" />
+			<div class="settings_label">This option controls the main color for LifterLMS.</div>
+			<?php
+		}
+
+		public function SecondaryColorOutput()
+		{
+			$o = get_option('LLMS_CustomizationSettings');
+			?>
+			<input type="text" id="secondary-master" name="LLMS_CustomizationSettings[secondary-color]" 
+			value="<?php echo isset($o['secondary-color']) ? $o['secondary-color'] : '#e24038'; ?>" 
+			class="my-color-field secondary-color" data-default-color="#e24038" />
+			<div class="settings_label">This option controls the secondary color for LifterLMS</div>
+			<?php
+		}
+
+		public function ThemeSectionClose()
+		{						
 			submit_button('Advanced View', 'secondary', 'enable_advanced_view');
 		}
 
@@ -258,7 +345,9 @@ if ( ! class_exists( 'LLMS_Customization') ) :
 		{
 			$o = get_option('LLMS_CustomizationSettings');
 			?>
-			<input type="text" name="LLMS_CustomizationSettings[button-color]" value="<?php echo isset($o['button-color']) ? $o['button-color'] : '#e5554e'; ?>" class="my-color-field" data-default-color="#e5554e" />
+			<input type="text"  id="primary-button-color"  name="LLMS_CustomizationSettings[button-color]" 
+			value="<?php echo isset($o['button-color']) ? $o['button-color'] : '#e5554e'; ?>" 
+			class="my-color-field primary-color" data-default-color="#e5554e" />
 			<div class="settings_label">This option controls the main color for LifterLMS' standard buttons (e.g., 'View Course')</div>
 			<?php
 		}
@@ -267,8 +356,21 @@ if ( ! class_exists( 'LLMS_Customization') ) :
 		{
 			$o = get_option('LLMS_CustomizationSettings');
 			?>
-			<input type="text" name="LLMS_CustomizationSettings[button-hover-color]" value="<?php echo isset($o['button-hover-color']) ? $o['button-hover-color'] : '#e24038'; ?>" class="my-color-field" data-default-color="#e24038" />
+			<input type="text" name="LLMS_CustomizationSettings[button-hover-color]" 
+			value="<?php echo isset($o['button-hover-color']) ? $o['button-hover-color'] : '#e24038'; ?>" 
+			class="my-color-field secondary-color" data-default-color="#e24038" />
 			<div class="settings_label">This option controls the hover color for LifterLMS' standard buttons</div>
+			<?php
+		}
+
+		public function PrimaryButtonHoverTextColorOutput()
+		{
+			$o = get_option('LLMS_CustomizationSettings');
+			?>
+			<input type="text" name="LLMS_CustomizationSettings[button-hover-text-color]" 
+			value="<?php echo isset($o['button-hover-text-color']) ? $o['button-hover-text-color'] : '#fefefe'; ?>" 
+			class="my-color-field" data-default-color="#fefefe" />
+			<div class="settings_label">This option controls the hover text color for LifterLMS' standard buttons</div>
 			<?php
 		}
 
@@ -304,7 +406,9 @@ if ( ! class_exists( 'LLMS_Customization') ) :
 		{
 			$o = get_option('LLMS_CustomizationSettings');
 			?>
-			<input type="text" name="LLMS_CustomizationSettings[secondary-button-hover-color]" value="<?php echo isset($o['secondary-button-hover-color']) ? $o['secondary-button-hover-color'] : '#e5554e'; ?>" class="my-color-field" data-default-color="#e5554e" />
+			<input type="text" name="LLMS_CustomizationSettings[secondary-button-hover-color]" 
+			value="<?php echo isset($o['secondary-button-hover-color']) ? $o['secondary-button-hover-color'] : '#e5554e'; ?>" 
+			class="my-color-field primary-color" data-default-color="#e5554e" />
 			<div class="settings_label">This option controls the hover color for LifterLMS' secondary buttons</div>
 			<?php
 		}
@@ -315,6 +419,17 @@ if ( ! class_exists( 'LLMS_Customization') ) :
 			?>
 			<input type="text" name="LLMS_CustomizationSettings[secondary-button-text-color]" value="<?php echo isset($o['secondary-button-text-color']) ? $o['secondary-button-text-color'] : '#fefefe'; ?>" class="my-color-field" data-default-color="#fefefe" />
 			<div class="settings_label">This option controls the text color for LifterLMS' secondary buttons</div>
+			<?php
+		}
+
+		public function SecondaryButtonHoverTextColorOutput()
+		{
+			$o = get_option('LLMS_CustomizationSettings');
+			?>
+			<input type="text" name="LLMS_CustomizationSettings[secondary-button-hover-text-color]" 
+			value="<?php echo isset($o['secondary-button-hover-text-color']) ? $o['secondary-button-hover-text-color'] : '#fefefe'; ?>" 
+			class="my-color-field" data-default-color="#fefefe" />
+			<div class="settings_label">This option controls the hover text color for LifterLMS' standard buttons</div>
 			<?php
 		}
 
@@ -341,7 +456,9 @@ if ( ! class_exists( 'LLMS_Customization') ) :
 		{
 			$o = get_option('LLMS_CustomizationSettings');
 			?>
-			<input type="text" name="LLMS_CustomizationSettings[complete-lesson-text-color]" value="<?php echo isset($o['complete-lesson-text-color']) ? $o['complete-lesson-text-color'] : '#e5554e'; ?>" class="my-color-field" data-default-color="#e5554e" />
+			<input type="text" name="LLMS_CustomizationSettings[complete-lesson-text-color]" 
+			value="<?php echo isset($o['complete-lesson-text-color']) ? $o['complete-lesson-text-color'] : '#e5554e'; ?>" 
+			class="my-color-field primary-color" data-default-color="#e5554e" />
 			<div class="settings_label">This option controls the icon color for the complete lessons on the course syllabus</div>
 			<?php
 		}
@@ -359,7 +476,9 @@ if ( ! class_exists( 'LLMS_Customization') ) :
 		{
 			$o = get_option('LLMS_CustomizationSettings');
 			?>
-			<input type="text" name="LLMS_CustomizationSettings[progress-bar-completed-color]" value="<?php echo isset($o['progress-bar-completed-color']) ? $o['progress-bar-completed-color'] : '#e5554e'; ?>" class="my-color-field" data-default-color="#e5554e" />
+			<input type="text" name="LLMS_CustomizationSettings[progress-bar-completed-color]" 
+			value="<?php echo isset($o['progress-bar-completed-color']) ? $o['progress-bar-completed-color'] : '#e5554e'; ?>" 
+			class="my-color-field primary-color" data-default-color="#e5554e" />
 			<div class="settings_label">This option controls the color for the completed portion of the progress bar</div>
 			<?php
 		}
@@ -368,7 +487,9 @@ if ( ! class_exists( 'LLMS_Customization') ) :
 		{
 			$o = get_option('LLMS_CustomizationSettings');
 			?>
-			<input type="text" name="LLMS_CustomizationSettings[course-home-completed-lesson-icon-color]" value="<?php echo isset($o['course-home-completed-lesson-icon-color']) ? $o['course-home-completed-lesson-icon-color'] : '#e5554e'; ?>" class="my-color-field" data-default-color="#e5554e" />
+			<input type="text" name="LLMS_CustomizationSettings[course-home-completed-lesson-icon-color]" 
+			value="<?php echo isset($o['course-home-completed-lesson-icon-color']) ? $o['course-home-completed-lesson-icon-color'] : '#e5554e'; ?>" 
+			class="my-color-field primary-color" data-default-color="#e5554e" />
 			<div class="settings_label">This option controls the icon color this is displayed by completed lessons on the course home page</div>
 			<?php
 		}
@@ -399,10 +520,12 @@ if ( ! class_exists( 'LLMS_Customization') ) :
 			?>
 			<div class="wrap">
 				<h2>LifterLMS Customization</h2>
-				<form method="post" action="options.php">
+				<form method="post" action="options.php" id="llms_customization_form">					
 				    <?php settings_fields( 'LLMS_CustomizationSettings' ); ?>
+				    <?php $o = get_option('LLMS_CustomizationSettings'); ?>
+				    <input name="LLMS_CustomizationSettings[advanced_mode]" id="advanced_mode" type="hidden" value="<?php echo isset($o['advanced_mode']) ? $o['advanced_mode'] : '0';?>">
 				    <?php do_settings_sections( 'lifterlms_custom_open' ); ?>
-				    <div id="advanced_color_content" style="display:none;">
+				    <div id="advanced_color_content">
 				    <?php do_settings_sections( 'lifterlms_custom' ); ?>
 				    </div>
 				    <?php do_settings_sections( 'lifterlms_custom_close' ); ?>				    
@@ -411,6 +534,68 @@ if ( ! class_exists( 'LLMS_Customization') ) :
 				</div>
 
 			</div>
+			<?php
+		}
+
+		public function GenerateCSS()
+		{
+			$o = get_option('LLMS_CustomizationSettings');
+			?>
+			<style type="text/css">
+				.course h3 > a
+				{
+					color:<?php echo $o['button-color'];?>; 
+				}
+
+				.llms-button
+				{
+					background-color:<?php echo $o['button-color'];?>;
+					color:<?php echo $o['button-text-color'];?>;
+				}
+				
+				.llms-button:hover
+				{
+					background-color:<?php echo $o['button-hover-color'];?>;
+					color:<?php echo $o['button-hover-text-color'];?>;
+				}
+
+				button, input[type="button"], input[type="reset"], input[type="submit"], .button
+				{
+					background-color:<?php echo $o['secondary-button-color'] . '!important';?>;
+					color:<?php echo $o['secondary-button-text-color'] . '!important';?>;
+				}
+
+				button:hover, input:hover[type="button"], input:hover[type="reset"], input:hover[type="submit"], .button:hover
+				{
+					background-color:<?php echo $o['secondary-button-hover-color'] . '!important';?>;
+					color:<?php echo $o['secondary-button-hover-text-color'] . '!important';?>;
+				}
+
+				.llms-widget-syllabus .llms-lesson-complete
+				{
+					color:<?php echo $o['incomplete-lesson-text-color'];?>;
+				}
+
+				.llms-widget-syllabus .llms-lesson-complete.done
+				{
+					color:<?php echo $o['complete-lesson-text-color'];?>;
+				}
+
+				.llms-progress .progress-bar
+				{
+					background-color:<?php echo $o['progress-bar-base-color'];?>;
+				}
+
+				.llms-progress .progress-bar-complete
+				{
+					background-color:<?php echo $o['progress-bar-completed-color'];?>;
+				}
+
+				.llms-lesson-preview .llms-lesson-complete
+				{
+					color:<?php echo $o['course-home-completed-lesson-icon-color'];?>;
+				}
+			</style>
 			<?php
 		}		
 	}
