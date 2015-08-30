@@ -1,9 +1,9 @@
 #LifterLMS-Customization
 #Change Log
-## v0.9.0 -- 2015/08/28
+## v0.9.0 -- 2015/08/29
 + Initial Beta Version
 + Adds Donate Button
-+ Adds Updater
++ Adds Updater to plugin
 
 ## v0.8.0 -- 2015/08/28
 + Finished Themes
