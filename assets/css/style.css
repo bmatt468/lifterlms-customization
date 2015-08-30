@@ -1,0 +1,15 @@
+#toplevel_page_lifterlms_customization > a > div.wp-menu-image.dashicons-before > img
+{
+	height: 18px;
+	width: 18px;
+}
+
+.settings_label
+{
+	font-style: italic;
+}
+
+#wpfooter
+{
+	position: inherit;
+}
