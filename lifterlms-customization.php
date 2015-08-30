@@ -2,7 +2,7 @@
 /**
 * Plugin Name: LifterLMS-Customization
 * Description: This plugin allows you to easily change the look and feel of LifterLMS without having to do any backend CSS work.
-* Version: 0.9.0
+* Version: 0.9.1
 * Author: Benjamin R. Matthews
 * Author URI: http://benjaminrmatthews.com
 *
@@ -47,6 +47,10 @@ if ( ! class_exists( 'LLMS_Customization') ) :
 					'50.15974');
 				add_action( 'admin_init', array($this,'RegisterSettings'));
 				add_action( 'wp_head', array($this,'GenerateCSS'));
+				$myUpdateChecker = PucFactory::buildUpdateChecker(
+				    'http://benjaminrmatthews.com/update-server/lifterlms-customization/plugin-info.JSON',
+				    __FILE__
+				);
 			}
 			else 
 			{
@@ -84,7 +88,7 @@ if ( ! class_exists( 'LLMS_Customization') ) :
 		{			
 			if ( class_exists( 'LifterLMS') ) 
 			{
-				require_once(LLMSCustomization_PLUGIN_DIR . 'update.php');
+				require_once(LLMSCustomization_PLUGIN_DIR . 'plugin-update-checker/plugin-update-checker.php');
 			} 
 		}
 		
