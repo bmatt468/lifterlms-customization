@@ -1,9 +1,8 @@
 <?php
 /**
 * Plugin Name: LifterLMS-Customization
-* Plugin URI: http://lifterextensions.com/
 * Description: This plugin allows you to easily change the look and feel of LifterLMS without having to do any backend CSS work.
-* Version: 0.6.0
+* Version: 0.9.1
 * Author: Benjamin R. Matthews
 * Author URI: http://benjaminrmatthews.com
 *
@@ -48,6 +47,10 @@ if ( ! class_exists( 'LLMS_Customization') ) :
 					'50.15974');
 				add_action( 'admin_init', array($this,'RegisterSettings'));
 				add_action( 'wp_head', array($this,'GenerateCSS'));
+				$myUpdateChecker = PucFactory::buildUpdateChecker(
+				    'http://benjaminrmatthews.com/update-server/lifterlms-customization/plugin-info.JSON',
+				    __FILE__
+				);
 			}
 			else 
 			{
@@ -85,7 +88,7 @@ if ( ! class_exists( 'LLMS_Customization') ) :
 		{			
 			if ( class_exists( 'LifterLMS') ) 
 			{
-				
+				require_once(LLMSCustomization_PLUGIN_DIR . 'plugin-update-checker/plugin-update-checker.php');
 			} 
 		}
 		
@@ -512,6 +515,12 @@ if ( ! class_exists( 'LLMS_Customization') ) :
 			?>
 			<p>Enjoying the plugin? Maybe consider donating! There is, of course, no pressure at all! I appreciate your support and feedback as I work to make
 			this plugin as useful and usable as possible. Thanks you so much for your kind support!</p>
+			<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+			<input type="hidden" name="cmd" value="_s-xclick">
+			<input type="hidden" name="hosted_button_id" value="PW4YEHTEXF8UW">
+			<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+			<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+			</form>
 			<?php
 		}
 
@@ -527,10 +536,10 @@ if ( ! class_exists( 'LLMS_Customization') ) :
 				    <?php do_settings_sections( 'lifterlms_custom_open' ); ?>
 				    <div id="advanced_color_content">
 				    <?php do_settings_sections( 'lifterlms_custom' ); ?>
-				    </div>
-				    <?php do_settings_sections( 'lifterlms_custom_close' ); ?>				    
+				    </div>				    
 				    <?php submit_button(); ?>
-				</form>
+				</form>				
+			    <?php do_settings_sections( 'lifterlms_custom_close' ); ?>
 				</div>
 
 			</div>
