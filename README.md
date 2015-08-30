@@ -2,6 +2,8 @@
 #Change Log
 ## v0.9.0 -- 2015/08/28
 + Initial Beta Version
++ Adds Donate Button
++ Adds Updater
 
 ## v0.8.0 -- 2015/08/28
 + Finished Themes
