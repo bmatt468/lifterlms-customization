@@ -2,7 +2,7 @@
 /**
 * Plugin Name: LifterLMS-Customization
 * Description: This plugin allows you to easily change the look and feel of LifterLMS without having to do any backend CSS work.
-* Version: 0.9.1
+* Version: 0.9.2
 * Author: Benjamin R. Matthews
 * Author URI: http://benjaminrmatthews.com
 *
@@ -253,7 +253,7 @@ if ( ! class_exists( 'LLMS_Customization') ) :
 			);
 
 			add_settings_field( 'course_home_completed_lesson_icon_color',
-				'Progress Bar Completed Color',
+				'Completed Lesson Icon Color',
 				array($this,'CourseSyllabusCompletedLessonColorOutput'),
 				'lifterlms_custom',
 				 'LLMS_CustomizationLessonColorSection'
@@ -372,7 +372,7 @@ if ( ! class_exists( 'LLMS_Customization') ) :
 			?>
 			<input type="text" name="LLMS_CustomizationSettings[button-hover-text-color]" 
 			value="<?php echo isset($o['button-hover-text-color']) ? $o['button-hover-text-color'] : '#fefefe'; ?>" 
-			class="my-color-field" data-default-color="#fefefe" />
+			class="my-color-field text-color" data-default-color="#fefefe" />
 			<div class="settings_label">This option controls the hover text color for LifterLMS' standard buttons</div>
 			<?php
 		}
@@ -381,7 +381,9 @@ if ( ! class_exists( 'LLMS_Customization') ) :
 		{
 			$o = get_option('LLMS_CustomizationSettings');
 			?>
-			<input type="text" name="LLMS_CustomizationSettings[button-text-color]" value="<?php echo isset($o['button-text-color']) ? $o['button-text-color'] : '#fefefe'; ?>" class="my-color-field" data-default-color="#fefefe" />
+			<input type="text" name="LLMS_CustomizationSettings[button-text-color]" 
+			value="<?php echo isset($o['button-text-color']) ? $o['button-text-color'] : '#fefefe'; ?>" 
+			class="my-color-field text-color" data-default-color="#fefefe" />
 			<div class="settings_label">This option controls the text color for LifterLMS' standard buttons</div>
 			<?php
 		}
@@ -400,7 +402,9 @@ if ( ! class_exists( 'LLMS_Customization') ) :
 		{
 			$o = get_option('LLMS_CustomizationSettings');
 			?>
-			<input type="text" name="LLMS_CustomizationSettings[secondary-button-color]" value="<?php echo isset($o['secondary-button-color']) ? $o['secondary-button-color'] : '#333333'; ?>" class="my-color-field" data-default-color="#333333" />
+			<input type="text" name="LLMS_CustomizationSettings[secondary-button-color]" 
+			value="<?php echo isset($o['secondary-button-color']) ? $o['secondary-button-color'] : '#333333'; ?>" 
+			class="my-color-field secondary-black" data-default-color="#333333" />
 			<div class="settings_label">This option controls the main color for LifterLMS' secondary buttons (e.g., 'Take this Course', 'Sign Up')</div>
 			<?php
 		}
@@ -420,7 +424,9 @@ if ( ! class_exists( 'LLMS_Customization') ) :
 		{
 			$o = get_option('LLMS_CustomizationSettings');
 			?>
-			<input type="text" name="LLMS_CustomizationSettings[secondary-button-text-color]" value="<?php echo isset($o['secondary-button-text-color']) ? $o['secondary-button-text-color'] : '#fefefe'; ?>" class="my-color-field" data-default-color="#fefefe" />
+			<input type="text" name="LLMS_CustomizationSettings[secondary-button-text-color]" 
+			value="<?php echo isset($o['secondary-button-text-color']) ? $o['secondary-button-text-color'] : '#fefefe'; ?>" 
+			class="my-color-field text-color" data-default-color="#fefefe" />
 			<div class="settings_label">This option controls the text color for LifterLMS' secondary buttons</div>
 			<?php
 		}
@@ -431,7 +437,7 @@ if ( ! class_exists( 'LLMS_Customization') ) :
 			?>
 			<input type="text" name="LLMS_CustomizationSettings[secondary-button-hover-text-color]" 
 			value="<?php echo isset($o['secondary-button-hover-text-color']) ? $o['secondary-button-hover-text-color'] : '#fefefe'; ?>" 
-			class="my-color-field" data-default-color="#fefefe" />
+			class="my-color-field text-color" data-default-color="#fefefe" />
 			<div class="settings_label">This option controls the hover text color for LifterLMS' standard buttons</div>
 			<?php
 		}
@@ -450,7 +456,9 @@ if ( ! class_exists( 'LLMS_Customization') ) :
 		{
 			$o = get_option('LLMS_CustomizationSettings');
 			?>
-			<input type="text" name="LLMS_CustomizationSettings[incomplete-lesson-text-color]" value="<?php echo isset($o['incomplete-lesson-text-color']) ? $o['incomplete-lesson-text-color'] : '#cccccc'; ?>" class="my-color-field" data-default-color="#cccccc" />
+			<input type="text" name="LLMS_CustomizationSettings[incomplete-lesson-text-color]" 
+			value="<?php echo isset($o['incomplete-lesson-text-color']) ? $o['incomplete-lesson-text-color'] : '#cccccc'; ?>" 
+			class="my-color-field incomplete-lesson-icon" data-default-color="#cccccc" />
 			<div class="settings_label">This option controls the icon color for the incomplete lessons on the course syllabus</div>
 			<?php
 		}
@@ -470,7 +478,9 @@ if ( ! class_exists( 'LLMS_Customization') ) :
 		{
 			$o = get_option('LLMS_CustomizationSettings');
 			?>
-			<input type="text" name="LLMS_CustomizationSettings[progress-bar-base-color]" value="<?php echo isset($o['progress-bar-base-color']) ? $o['progress-bar-base-color'] : '#f1f2f1'; ?>" class="my-color-field" data-default-color="#f1f2f1" />
+			<input type="text" name="LLMS_CustomizationSettings[progress-bar-base-color]" 
+			value="<?php echo isset($o['progress-bar-base-color']) ? $o['progress-bar-base-color'] : '#f1f2f1'; ?>" 
+			class="my-color-field progress-bar-base" data-default-color="#f1f2f1" />
 			<div class="settings_label">This option controls the base color for the progress bar</div>
 			<?php
 		}
