@@ -1,5 +1,13 @@
 #LifterLMS-Customization
 #Change Log
+## v0.9.2 -- 2015/08/31
++ BugFixes: Wrong color change on theme change
++ BugFixes: Hover text color doesn't change on theme change
++ BugFixes: Theme select changes color tabs
++ BugFixes: Secondary button fill cover now changes
++ BugFixes: Fixes Incomplete Lesson icon color
++ BugFixes: Fixes Progress Bar Base Color
+
 ## v0.9.1 -- 2015/08/29
 + Modifies plugin update handler
 

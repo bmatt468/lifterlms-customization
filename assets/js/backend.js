@@ -72,48 +72,93 @@ jQuery(document).ready(function($){
 		{
 			$('#llms_customization_form > table > tbody > tr:nth-child(2) > td > div.wp-picker-container > a').css('background-color','rgb(0,127,255)');
 			$('#advanced_color_content > table:nth-child(3) > tbody > tr:nth-child(1) > td > div.wp-picker-container > a').css('background-color','rgb(0,127,255)');
-			$('#advanced_color_content > table:nth-child(6) > tbody > tr:nth-child(2) > td > div.wp-picker-container > a').css('background-color','rgb(0,127,255)');
+			$('#advanced_color_content > table:nth-child(6) > tbody > tr:nth-child(3) > td > div.wp-picker-container > a').css('background-color','rgb(0,127,255)');
 			$('#advanced_color_content > table:nth-child(9) > tbody > tr:nth-child(2) > td > div.wp-picker-container > a').css('background-color','rgb(0,127,255)');
 			$('#advanced_color_content > table:nth-child(9) > tbody > tr:nth-child(4) > td > div.wp-picker-container > a').css('background-color','rgb(0,127,255)');
 			$('#advanced_color_content > table:nth-child(9) > tbody > tr:nth-child(5) > td > div.wp-picker-container > a').css('background-color','rgb(0,127,255)');			
 
 			$('#llms_customization_form > table > tbody > tr:nth-child(3) > td > div.wp-picker-container > a').css('background-color','rgb(0,95,239)');
-			$('#advanced_color_content > table:nth-child(3) > tbody > tr:nth-child(2) > td > div.wp-picker-container > a').css('background-color','rgb(0,95,239)');
+			$('#advanced_color_content > table:nth-child(3) > tbody > tr:nth-child(3) > td > div.wp-picker-container > a').css('background-color','rgb(0,95,239)');
+
+			$('#advanced_color_content > table:nth-child(3) > tbody > tr:nth-child(2) > td > div.wp-picker-container > a').css('background-color','rgb(254,254,254)');
+			$('#advanced_color_content > table:nth-child(3) > tbody > tr:nth-child(4) > td > div.wp-picker-container > a').css('background-color','rgb(254,254,254)');
+			$('#advanced_color_content > table:nth-child(6) > tbody > tr:nth-child(2) > td > div.wp-picker-container > a').css('background-color','rgb(254,254,254)');
+			$('#advanced_color_content > table:nth-child(6) > tbody > tr:nth-child(4) > td > div.wp-picker-container > a').css('background-color','rgb(254,254,254)');
+
+			$('#advanced_color_content > table:nth-child(6) > tbody > tr:nth-child(1) > td > div.wp-picker-container > a').css('background-color','rgb(51,51,51)');
+
+			$('#advanced_color_content > table:nth-child(9) > tbody > tr:nth-child(1) > td > div.wp-picker-container > a').css('background-color','rgb(204,204,204)');
+
+			$('#advanced_color_content > table:nth-child(9) > tbody > tr:nth-child(3) > td > div.wp-picker-container > a').css('background-color','rgb(241,241,241)');
 
 			$('.primary-color').val('#007fff');
 			$('.secondary-color').val('#005fef');
+			$('.text-color').val('#fefefe');
+			$('.secondary-black').val('#333333');
+			$('.incomplete-lesson-icon').val('#CCCCCC');
+			$('.progress-bar-base').val('#f1f2f1');
 			$('#theme_select').val('blue');
 		}
 		else if ($(this).val() === 'green')
 		{
 			$('#llms_customization_form > table > tbody > tr:nth-child(2) > td > div.wp-picker-container > a').css('background-color','rgb(80,200,120)');
 			$('#advanced_color_content > table:nth-child(3) > tbody > tr:nth-child(1) > td > div.wp-picker-container > a').css('background-color','rgb(80,200,120)');
-			$('#advanced_color_content > table:nth-child(6) > tbody > tr:nth-child(2) > td > div.wp-picker-container > a').css('background-color','rgb(80,200,120)');
+			$('#advanced_color_content > table:nth-child(6) > tbody > tr:nth-child(3) > td > div.wp-picker-container > a').css('background-color','rgb(80,200,120)');
 			$('#advanced_color_content > table:nth-child(9) > tbody > tr:nth-child(2) > td > div.wp-picker-container > a').css('background-color','rgb(80,200,120)');
 			$('#advanced_color_content > table:nth-child(9) > tbody > tr:nth-child(4) > td > div.wp-picker-container > a').css('background-color','rgb(80,200,120)');
 			$('#advanced_color_content > table:nth-child(9) > tbody > tr:nth-child(5) > td > div.wp-picker-container > a').css('background-color','rgb(80,200,120)');			
 
 			$('#llms_customization_form > table > tbody > tr:nth-child(3) > td > div.wp-picker-container > a').css('background-color','rgb(31,198,87)');
-			$('#advanced_color_content > table:nth-child(3) > tbody > tr:nth-child(2) > td > div.wp-picker-container > a').css('background-color','rgb(31,198,87)');
+			$('#advanced_color_content > table:nth-child(3) > tbody > tr:nth-child(3) > td > div.wp-picker-container > a').css('background-color','rgb(31,198,87)');
+
+			$('#advanced_color_content > table:nth-child(3) > tbody > tr:nth-child(2) > td > div.wp-picker-container > a').css('background-color','rgb(254,254,254)');
+			$('#advanced_color_content > table:nth-child(3) > tbody > tr:nth-child(4) > td > div.wp-picker-container > a').css('background-color','rgb(254,254,254)');
+			$('#advanced_color_content > table:nth-child(6) > tbody > tr:nth-child(2) > td > div.wp-picker-container > a').css('background-color','rgb(254,254,254)');
+			$('#advanced_color_content > table:nth-child(6) > tbody > tr:nth-child(4) > td > div.wp-picker-container > a').css('background-color','rgb(254,254,254)');
+
+			$('#advanced_color_content > table:nth-child(6) > tbody > tr:nth-child(1) > td > div.wp-picker-container > a').css('background-color','rgb(51,51,51)');
+
+			$('#advanced_color_content > table:nth-child(9) > tbody > tr:nth-child(1) > td > div.wp-picker-container > a').css('background-color','rgb(204,204,204)');
+
+			$('#advanced_color_content > table:nth-child(9) > tbody > tr:nth-child(3) > td > div.wp-picker-container > a').css('background-color','rgb(241,241,241)');
 
 			$('.primary-color').val('#50c878');
 			$('.secondary-color').val('#1fc657');
+			$('.text-color').val('#fefefe');
+			$('.secondary-black').val('#333333');
+			$('.incomplete-lesson-icon').val('#CCCCCC');			
+			$('.progress-bar-base').val('#f1f2f1');
 			$('#theme_select').val('green');
 		}
 		else if ($(this).val() === 'orange')
 		{
 			$('#llms_customization_form > table > tbody > tr:nth-child(2) > td > div.wp-picker-container > a').css('background-color','rgb(255,153,102)');
 			$('#advanced_color_content > table:nth-child(3) > tbody > tr:nth-child(1) > td > div.wp-picker-container > a').css('background-color','rgb(255,153,102)');
-			$('#advanced_color_content > table:nth-child(6) > tbody > tr:nth-child(2) > td > div.wp-picker-container > a').css('background-color','rgb(255,153,102)');
+			$('#advanced_color_content > table:nth-child(6) > tbody > tr:nth-child(3) > td > div.wp-picker-container > a').css('background-color','rgb(255,153,102)');
 			$('#advanced_color_content > table:nth-child(9) > tbody > tr:nth-child(2) > td > div.wp-picker-container > a').css('background-color','rgb(255,153,102)');
 			$('#advanced_color_content > table:nth-child(9) > tbody > tr:nth-child(4) > td > div.wp-picker-container > a').css('background-color','rgb(255,153,102)');
 			$('#advanced_color_content > table:nth-child(9) > tbody > tr:nth-child(5) > td > div.wp-picker-container > a').css('background-color','rgb(255,153,102)');			
 
 			$('#llms_customization_form > table > tbody > tr:nth-child(3) > td > div.wp-picker-container > a').css('background-color','rgb(255,132,71)');
-			$('#advanced_color_content > table:nth-child(3) > tbody > tr:nth-child(2) > td > div.wp-picker-container > a').css('background-color','rgb(255,132,71)');
+			$('#advanced_color_content > table:nth-child(3) > tbody > tr:nth-child(3) > td > div.wp-picker-container > a').css('background-color','rgb(255,132,71)');
+
+			$('#advanced_color_content > table:nth-child(3) > tbody > tr:nth-child(2) > td > div.wp-picker-container > a').css('background-color','rgb(254,254,254)');
+			$('#advanced_color_content > table:nth-child(3) > tbody > tr:nth-child(4) > td > div.wp-picker-container > a').css('background-color','rgb(254,254,254)');
+			$('#advanced_color_content > table:nth-child(6) > tbody > tr:nth-child(2) > td > div.wp-picker-container > a').css('background-color','rgb(254,254,254)');
+			$('#advanced_color_content > table:nth-child(6) > tbody > tr:nth-child(4) > td > div.wp-picker-container > a').css('background-color','rgb(254,254,254)');
+
+			$('#advanced_color_content > table:nth-child(6) > tbody > tr:nth-child(1) > td > div.wp-picker-container > a').css('background-color','rgb(51,51,51)');
+
+			$('#advanced_color_content > table:nth-child(9) > tbody > tr:nth-child(1) > td > div.wp-picker-container > a').css('background-color','rgb(204,204,204)');
+			
+			$('#advanced_color_content > table:nth-child(9) > tbody > tr:nth-child(3) > td > div.wp-picker-container > a').css('background-color','rgb(241,241,241)');
 
 			$('.primary-color').val('#ff9966');
 			$('.secondary-color').val('#ff8447');
+			$('.text-color').val('#fefefe');
+			$('.secondary-black').val('#333333');
+			$('.incomplete-lesson-icon').val('#CCCCCC');			
+			$('.progress-bar-base').val('#f1f2f1');
 			$('#theme_select').val('orange');
 		}
     });
