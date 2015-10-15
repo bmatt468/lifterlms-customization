@@ -2,7 +2,7 @@
 /**
 * Plugin Name: LifterLMS-Customization
 * Description: This plugin allows you to easily change the look and feel of LifterLMS without having to do any backend CSS work.
-* Version: 0.9.2
+* Version: 0.9.3
 * Author: Benjamin R. Matthews
 * Author URI: http://benjaminrmatthews.com
 *
@@ -613,6 +613,11 @@ if ( ! class_exists( 'LLMS_Customization') ) :
 				.llms-lesson-preview .llms-lesson-complete
 				{
 					color:<?php echo $o['course-home-completed-lesson-icon-color'];?>;
+				}
+
+				.llms-lesson-preview .llms-free-lesson-svg
+				{
+					fill:<?php echo $o['course-home-completed-lesson-icon-color'];?>;
 				}
 			</style>
 			<?php
