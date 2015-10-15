@@ -614,6 +614,11 @@ if ( ! class_exists( 'LLMS_Customization') ) :
 				{
 					color:<?php echo $o['course-home-completed-lesson-icon-color'];?>;
 				}
+
+				.llms-lesson-preview .llms-free-lesson-svg
+				{
+					fill:<?php echo $o['course-home-completed-lesson-icon-color'];?>;
+				}
 			</style>
 			<?php
 		}		

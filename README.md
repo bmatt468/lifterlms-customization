@@ -1,5 +1,8 @@
 #LifterLMS-Customization
 #Change Log
+## v0.9.3 -- 2015/10/15
++ Updates: Plugin now works with Free Lesson SVG
+
 ## v0.9.2 -- 2015/08/31
 + BugFixes: Wrong color change on theme change
 + BugFixes: Hover text color doesn't change on theme change
