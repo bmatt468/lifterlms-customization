@@ -1,5 +1,8 @@
 #LifterLMS-Customization
 #Change Log
+## v0.9.4 -- 2015/10/17
++ Updates: Fixes CSS to work with new progress bar class
+
 ## v0.9.3 -- 2015/10/15
 + Updates: Plugin now works with Free Lesson SVG
 
