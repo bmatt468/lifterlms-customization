@@ -2,7 +2,7 @@
 /**
 * Plugin Name: LifterLMS-Customization
 * Description: This plugin allows you to easily change the look and feel of LifterLMS without having to do any backend CSS work.
-* Version: 0.9.3
+* Version: 0.9.4
 * Author: Benjamin R. Matthews
 * Author URI: http://benjaminrmatthews.com
 *
@@ -600,7 +600,7 @@ if ( ! class_exists( 'LLMS_Customization') ) :
 					color:<?php echo $o['complete-lesson-text-color'];?>;
 				}
 
-				.llms-progress .progress-bar
+				.llms-progress .llms-progress-bar
 				{
 					background-color:<?php echo $o['progress-bar-base-color'];?>;
 				}
